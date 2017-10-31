@@ -32,7 +32,7 @@
         XGVIdeoPlayView * playView = [[XGVIdeoPlayView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height) playerItem:playItem];
         [playView setBackgroundColor:[UIColor grayColor]];
         [self.view addSubview:playView];
-        
+        [playView play];
         
     }else{
         NSLog(@"路径不存在");

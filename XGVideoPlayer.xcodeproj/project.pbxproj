@@ -17,6 +17,8 @@
 		A7A3BCB51FA80D42002102BA /* XGVideoPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A3BCB41FA80D42002102BA /* XGVideoPlayerUITests.m */; };
 		A7A3BCC41FA80D88002102BA /* XGVIdeoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A3BCC31FA80D88002102BA /* XGVIdeoPlayView.m */; };
 		A7A3BCC61FA80E65002102BA /* fish_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7A3BCC51FA80E64002102BA /* fish_1.mp4 */; };
+		A7A3BCC91FA81293002102BA /* libc++abi.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A3BCC81FA8125A002102BA /* libc++abi.tbd */; };
+		A7A3BCD31FA813CE002102BA /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A7A3BCD21FA813CE002102BA /* libc++.tbd */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,16 @@
 		A7A3BCC21FA80D88002102BA /* XGVIdeoPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGVIdeoPlayView.h; sourceTree = "<group>"; };
 		A7A3BCC31FA80D88002102BA /* XGVIdeoPlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGVIdeoPlayView.m; sourceTree = "<group>"; };
 		A7A3BCC51FA80E64002102BA /* fish_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = fish_1.mp4; sourceTree = "<group>"; };
+		A7A3BCC81FA8125A002102BA /* libc++abi.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++abi.tbd"; path = "usr/lib/libc++abi.tbd"; sourceTree = SDKROOT; };
+		A7A3BCCA1FA812D0002102BA /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		A7A3BCCB1FA812D0002102BA /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		A7A3BCCC1FA812D8002102BA /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		A7A3BCCD1FA812D8002102BA /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		A7A3BCCE1FA8135E002102BA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A7A3BCCF1FA8138D002102BA /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		A7A3BCD01FA8138D002102BA /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		A7A3BCD11FA8138E002102BA /* MediaToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaToolbox.framework; path = System/Library/Frameworks/MediaToolbox.framework; sourceTree = SDKROOT; };
+		A7A3BCD21FA813CE002102BA /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +75,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7A3BCD31FA813CE002102BA /* libc++.tbd in Frameworks */,
+				A7A3BCC91FA81293002102BA /* libc++abi.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +104,7 @@
 				A7A3BCA81FA80D42002102BA /* XGVideoPlayerTests */,
 				A7A3BCB31FA80D42002102BA /* XGVideoPlayerUITests */,
 				A7A3BC8E1FA80D40002102BA /* Products */,
+				A7A3BCC71FA8125A002102BA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -138,6 +153,23 @@
 				A7A3BCB61FA80D42002102BA /* Info.plist */,
 			);
 			path = XGVideoPlayerUITests;
+			sourceTree = "<group>";
+		};
+		A7A3BCC71FA8125A002102BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A7A3BCD21FA813CE002102BA /* libc++.tbd */,
+				A7A3BCCF1FA8138D002102BA /* CoreMedia.framework */,
+				A7A3BCD01FA8138D002102BA /* MediaPlayer.framework */,
+				A7A3BCD11FA8138E002102BA /* MediaToolbox.framework */,
+				A7A3BCCE1FA8135E002102BA /* AVFoundation.framework */,
+				A7A3BCCD1FA812D8002102BA /* AudioToolbox.framework */,
+				A7A3BCCC1FA812D8002102BA /* CoreAudio.framework */,
+				A7A3BCCA1FA812D0002102BA /* CoreVideo.framework */,
+				A7A3BCCB1FA812D0002102BA /* VideoToolbox.framework */,
+				A7A3BCC81FA8125A002102BA /* libc++abi.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
