@@ -14,6 +14,10 @@
 
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
 
+@property (nonatomic, strong) UISlider *progressSlider;
+
+@property (nonatomic, strong) UITapGestureRecognizer *tapGes;
+
 @end
 
 @implementation XGVIdeoPlayView
@@ -28,6 +32,9 @@
         self.playerLayer.videoGravity=AVLayerVideoGravityResizeAspect;//视频填充模式
         self.playerLayer.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
         [self.layer addSublayer:self.playerLayer];
+        
+        //  添加手势
+        [self addPlayGesture];
         
         
         //  添加监听
@@ -45,15 +52,41 @@
         }
         
         
-        
-        
-        
-        
-        
-        
     }
     return self;
 }
+
+//  为播放器添加点击手势  暂停或者播放
+- (void)addPlayGesture{
+    
+    if (!self.tapGes) {
+        
+        self.tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesPlayOrPause)];
+        self.tapGes.numberOfTapsRequired = 2;
+        [self addGestureRecognizer:self.tapGes];
+    }
+    
+}
+
+//  点击操作  暂停或者播放
+
+- (void)tapGesPlayOrPause{
+    
+    if (self.player.rate == 0) {
+        //  当前是暂停状态 开始播放
+        NSLog(@"播放");
+        [self.player play];
+    }else{
+        //  当前是播放状态 点击暂停
+        
+        NSLog(@"暂停");
+        [self.player pause];
+        
+    }
+    
+}
+
+
 
 
 - (void)play{
