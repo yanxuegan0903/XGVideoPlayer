@@ -15,6 +15,8 @@
 		A7A3BCA01FA80D42002102BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A3BC9F1FA80D42002102BA /* main.m */; };
 		A7A3BCAA1FA80D42002102BA /* XGVideoPlayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A3BCA91FA80D42002102BA /* XGVideoPlayerTests.m */; };
 		A7A3BCB51FA80D42002102BA /* XGVideoPlayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A3BCB41FA80D42002102BA /* XGVideoPlayerUITests.m */; };
+		A7A3BCC41FA80D88002102BA /* XGVIdeoPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = A7A3BCC31FA80D88002102BA /* XGVIdeoPlayView.m */; };
+		A7A3BCC61FA80E65002102BA /* fish_1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = A7A3BCC51FA80E64002102BA /* fish_1.mp4 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		A7A3BCB01FA80D42002102BA /* XGVideoPlayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XGVideoPlayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A7A3BCB41FA80D42002102BA /* XGVideoPlayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGVideoPlayerUITests.m; sourceTree = "<group>"; };
 		A7A3BCB61FA80D42002102BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7A3BCC21FA80D88002102BA /* XGVIdeoPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XGVIdeoPlayView.h; sourceTree = "<group>"; };
+		A7A3BCC31FA80D88002102BA /* XGVIdeoPlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XGVIdeoPlayView.m; sourceTree = "<group>"; };
+		A7A3BCC51FA80E64002102BA /* fish_1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = fish_1.mp4; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +110,9 @@
 				A7A3BC911FA80D41002102BA /* AppDelegate.m */,
 				A7A3BC931FA80D41002102BA /* ViewController.h */,
 				A7A3BC941FA80D41002102BA /* ViewController.m */,
+				A7A3BCC21FA80D88002102BA /* XGVIdeoPlayView.h */,
+				A7A3BCC31FA80D88002102BA /* XGVIdeoPlayView.m */,
+				A7A3BCC51FA80E64002102BA /* fish_1.mp4 */,
 				A7A3BC961FA80D42002102BA /* Main.storyboard */,
 				A7A3BC991FA80D42002102BA /* Assets.xcassets */,
 				A7A3BC9B1FA80D42002102BA /* LaunchScreen.storyboard */,
@@ -241,6 +249,7 @@
 				A7A3BC9D1FA80D42002102BA /* LaunchScreen.storyboard in Resources */,
 				A7A3BC9A1FA80D42002102BA /* Assets.xcassets in Resources */,
 				A7A3BC981FA80D42002102BA /* Main.storyboard in Resources */,
+				A7A3BCC61FA80E65002102BA /* fish_1.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +277,7 @@
 				A7A3BC951FA80D41002102BA /* ViewController.m in Sources */,
 				A7A3BCA01FA80D42002102BA /* main.m in Sources */,
 				A7A3BC921FA80D41002102BA /* AppDelegate.m in Sources */,
+				A7A3BCC41FA80D88002102BA /* XGVIdeoPlayView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -433,6 +443,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U54J3QSAHN;
 				INFOPLIST_FILE = XGVideoPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cjl.XGVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -447,6 +458,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = U54J3QSAHN;
 				INFOPLIST_FILE = XGVideoPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cjl.XGVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
