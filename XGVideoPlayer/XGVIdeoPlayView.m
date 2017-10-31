@@ -39,9 +39,6 @@
         //  添加手势
         [self addPlayGesture];
         
-        //  添加进度条
-        [self addProgressSlider];
-        
         
         //  添加监听
         @try{
@@ -63,15 +60,17 @@
 
 #pragma mark - 为播放器添加点击手势  暂停或者播放
 
-- (void)addPlayGesture{
-    
-    if (!self.tapGes) {
-        
-        self.tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesPlayOrPause)];
-        self.tapGes.numberOfTapsRequired = 2;
-        [self addGestureRecognizer:self.tapGes];
+- (UITapGestureRecognizer *)tapGes{
+    if (!_tapGes) {
+        _tapGes = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGesPlayOrPause)];
+        _tapGes.numberOfTapsRequired = 2;
     }
-    
+    return _tapGes;
+}
+
+
+- (void)addPlayGesture{
+    [self addGestureRecognizer:self.tapGes];
 }
 
 
@@ -94,40 +93,31 @@
 }
 
 #pragma mark - 添加进度条
-- (void)addProgressSlider{
+
+- (UISlider *)progressSlider{
     
-    if (!self.progressSlider) {
-        
-        
+    if (!_progressSlider) {
         CGFloat width = self.frame.size.width;
         CGFloat height = 30;
         
-        self.progressSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, self.frame.size.height - height - 20, width, height)];
-        [self addSubview:self.progressSlider];
-        self.progressSlider.minimumValue = 0.0f;
-        self.progressSlider.maximumValue = 1.0f;
-        self.progressSlider.continuous = YES;
-//    slider.minimumTrackTintColor = [UIColor greenColor]; //滑轮左边颜色，如果设置了左边的图片就不会显示
-//    slider.maximumTrackTintColor = [UIColor redColor]; //滑轮右边颜色，如果设置了右边的图片就不会显示
-//    slider.thumbTintColor = [UIColor redColor];//设置了滑轮的颜色，如果设置了滑轮的样式图片就不会显示
-        [self.progressSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
-        
-        
-        
-        
-        
+        _progressSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, self.frame.size.height - height - 20, width, height)];
+        [self addSubview:_progressSlider];
+        _progressSlider.minimumValue = 0.0f;
+        _progressSlider.maximumValue = 1.0f;
+        _progressSlider.continuous = YES;
+        _progressSlider.minimumTrackTintColor = [UIColor greenColor]; //滑轮左边颜色，如果设置了左边的图片就不会显示
+        _progressSlider.maximumTrackTintColor = [UIColor redColor]; //滑轮右边颜色，如果设置了右边的图片就不会显示
+        _progressSlider.thumbTintColor = [UIColor purpleColor];//设置了滑轮的颜色，如果设置了滑轮的样式图片就不会显示
+        [_progressSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
     }
-    
-    
-    
+    return _progressSlider;
 }
+
 
 - (void)sliderValueChanged:(UISlider *)slider{
     
     int time = (int)(slider.value*_total);
     
-    NSLog(@"sliderValue = %d",time);
-
     [self.player seekToTime:CMTimeMake(time, 1.0)];
     
     if (self.player.rate == 0) {
@@ -197,7 +187,6 @@
         __strong typeof(weakSelf) strongSelf = weakSelf;
         float current = CMTimeGetSeconds(time);
         _total = CMTimeGetSeconds([strongSelf.player.currentItem duration]);
-        NSLog(@"当前进度%.2f/%.2f",current,_total);
         [strongSelf.progressSlider setValue:(current/_total) animated:YES];
     }];
 }
@@ -216,8 +205,6 @@
 
 //  播放完成的操作
 -(void)playbackFinished:(NSNotification *)notification{
-    NSLog(@"视频播放完成.");
-    
     //  播放结束后 暂停 然后继续从0开始播放
     [self.player pause];
     [self.player seekToTime:CMTimeMake(0, 1)];
