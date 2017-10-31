@@ -9,7 +9,10 @@
 #import "XGVIdeoPlayView.h"
 
 @interface XGVIdeoPlayView ()
-
+{
+    float _total;       //  总时长
+    
+}
 @property (nonatomic, strong) AVPlayer *player;
 
 @property (nonatomic, strong) AVPlayerLayer *playerLayer;
@@ -36,9 +39,11 @@
         //  添加手势
         [self addPlayGesture];
         
+        //  添加进度条
+        [self addProgressSlider];
+        
         
         //  添加监听
-        
         @try{
             [self addObserverToPlayerItem:playerItem];
             [self addProgressObserver];
@@ -56,7 +61,8 @@
     return self;
 }
 
-//  为播放器添加点击手势  暂停或者播放
+#pragma mark - 为播放器添加点击手势  暂停或者播放
+
 - (void)addPlayGesture{
     
     if (!self.tapGes) {
@@ -67,6 +73,7 @@
     }
     
 }
+
 
 //  点击操作  暂停或者播放
 
@@ -86,7 +93,48 @@
     
 }
 
+#pragma mark - 添加进度条
+- (void)addProgressSlider{
+    
+    if (!self.progressSlider) {
+        
+        
+        CGFloat width = self.frame.size.width;
+        CGFloat height = 30;
+        
+        self.progressSlider = [[UISlider alloc] initWithFrame:CGRectMake(0, self.frame.size.height - height - 20, width, height)];
+        [self addSubview:self.progressSlider];
+        self.progressSlider.minimumValue = 0.0f;
+        self.progressSlider.maximumValue = 1.0f;
+        self.progressSlider.continuous = YES;
+//    slider.minimumTrackTintColor = [UIColor greenColor]; //滑轮左边颜色，如果设置了左边的图片就不会显示
+//    slider.maximumTrackTintColor = [UIColor redColor]; //滑轮右边颜色，如果设置了右边的图片就不会显示
+//    slider.thumbTintColor = [UIColor redColor];//设置了滑轮的颜色，如果设置了滑轮的样式图片就不会显示
+        [self.progressSlider addTarget:self action:@selector(sliderValueChanged:) forControlEvents:UIControlEventValueChanged];
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+}
 
+- (void)sliderValueChanged:(UISlider *)slider{
+    
+    int time = (int)(slider.value*_total);
+    
+    NSLog(@"sliderValue = %d",time);
+
+    [self.player seekToTime:CMTimeMake(time, 1.0)];
+    
+    if (self.player.rate == 0) {
+        //  暂停了  继续播放
+        [self.player play];
+    }
+}
 
 
 - (void)play{
@@ -142,22 +190,15 @@
  */
 -(void)addProgressObserver {
     
-    //    AVPlayerItem *playerItem=self.player.currentItem;
-//    UISlider *slider=self.slider;
-//    UILabel *timeLabel = self.timeLabel;
     //这里设置每秒执行一次
     
     __weak typeof(self)weakSelf = self;
     [self.player addPeriodicTimeObserverForInterval:CMTimeMake(1.0, 1.0) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
         __strong typeof(weakSelf) strongSelf = weakSelf;
         float current = CMTimeGetSeconds(time);
-        float total = CMTimeGetSeconds([strongSelf.player.currentItem duration]);
-        NSLog(@"当前进度%.2f/%.2f",current,total);
-//        if (current) {
-//            [progress setProgress:(current/total) animated:YES];
-//            slider.value = current;
-//            timeLabel.text = [weakSelf convertTime:current];// 转换成播放时间
-//        }
+        _total = CMTimeGetSeconds([strongSelf.player.currentItem duration]);
+        NSLog(@"当前进度%.2f/%.2f",current,_total);
+        [strongSelf.progressSlider setValue:(current/_total) animated:YES];
     }];
 }
 
